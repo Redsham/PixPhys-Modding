@@ -1,0 +1,10 @@
+{
+	"Name":                  "Note Mod",
+	"Description":           "This mod adds a note.",
+	"Author":                "Morzzic",
+	"GameVersion":           "0.1",
+	"ModVersion":            "1.0",
+	"Thumbnail":           	 "PaperNote.png",
+	"Scripts": [			 "Script.cs"
+	]
+}
