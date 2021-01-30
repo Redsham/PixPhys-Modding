@@ -1,0 +1,10 @@
+{
+	"Name":                  "Rainbow Brick Mod",
+	"Description":           "This mod adds a Rainbow Brick.",
+	"Author":                "Morzzic",
+	"GameVersion":           "0.1",
+	"ModVersion":            "1.0",
+	"Thumbnail":           	 "None.png",
+	"Scripts": [			 "Script.cs"
+	]
+}
