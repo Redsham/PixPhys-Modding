@@ -10,8 +10,8 @@ public class RainbowBrickMod : MonoBehaviour
         Modification.Data.Thumbnail = Modification.LoadSprite("None.png");
 		
         Modification.Data.SpawnAction += (Instance) =>
-		{
-			Instance.AddComponent<RainbowBrick>();
+	{
+		Instance.AddComponent<RainbowBrick>();
         };
     }
 }
