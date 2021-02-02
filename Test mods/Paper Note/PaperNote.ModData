@@ -5,6 +5,6 @@
 	"GameVersion":           "0.1",
 	"ModVersion":            "1.0",
 	"Thumbnail":           	 "PaperNote.png",
-	"Scripts": [			 "Script.cs"
+	"Scripts": [		 "Script.cs"
 	]
 }
