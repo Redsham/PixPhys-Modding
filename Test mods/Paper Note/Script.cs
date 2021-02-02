@@ -10,10 +10,10 @@ public class PaperNoteMod : MonoBehaviour
         mod.Data.Thumbnail = mod.LoadSprite("PaperNote.png");
 		
         mod.Data.SpawnAction += (Instance) =>
-		{
-			Instance.AddComponent<PaperNoteBehaviour>();
-			Instance.GetComponent<SpriteRenderer>().sprite = mod.LoadSprite("PaperNote.png");
-			Instance.FixColliders();
+	{
+		Instance.AddComponent<PaperNoteBehaviour>();
+		Instance.GetComponent<SpriteRenderer>().sprite = mod.LoadSprite("PaperNote.png");
+		Instance.FixColliders();
         };
     }
 }
