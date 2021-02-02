@@ -9,10 +9,10 @@ public class EmptyMod : MonoBehaviour
         Modification.Data.Description = "Description"; //Set description
         Modification.Data.Thumbnail = Modification.LoadSprite("None.png"); //Set thumbnail
 		
-		//On spawn
+	//On spawn
         Modification.Data.SpawnAction += (Instance) =>
-		{
-			Debug.Log("Spawn!");
+	{
+		Debug.Log(Insatnce.name + " spawned!");
         };
     }
 }
