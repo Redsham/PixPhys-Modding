@@ -12,7 +12,7 @@ public class EmptyMod : MonoBehaviour
 	//On spawn
         Modification.Data.SpawnAction += (Instance) =>
 	{
-		Debug.Log(Insatnce.name + " spawned!");
+		Debug.Log(Instance.name + " spawned!");
         };
     }
 }
