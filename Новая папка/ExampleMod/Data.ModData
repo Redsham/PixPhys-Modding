@@ -1,0 +1,10 @@
+{
+	"Name":                  "Template Mod",
+	"Description":           "Description",
+	"Author":                "Author",
+	"GameVersion":           "Last",
+	"ModVersion":            "1.0",
+	"Thumbnail":           	 "Image.png",
+	"Scripts": [		 "Script.cs"
+	]
+}
