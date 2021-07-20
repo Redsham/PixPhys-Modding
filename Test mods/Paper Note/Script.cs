@@ -5,11 +5,11 @@ public class PaperNoteMod : MonoBehaviour
     public static void Main()
     {
         Modification mod = new Modification("Paper note", "Brick");
-        mod.Data.CategoryName = "Props";
-        mod.Data.Description = "Allows you to write a message and show it after activation.";
-        mod.Data.Thumbnail = mod.LoadSprite("PaperNote.png");
+        mod.Item.CategoryName = "Props";
+        mod.Item.Description = "Allows you to write a message and show it after activation.";
+        mod.Item.Thumbnail = mod.LoadSprite("PaperNote.png");
 		
-        mod.Data.SpawnAction += (Instance) =>
+        mod.Item.SpawnAction += (Instance) =>
 	{
 		Instance.AddComponent<PaperNoteBehaviour>();
 		Instance.GetComponent<SpriteRenderer>().sprite = mod.LoadSprite("PaperNote.png");
@@ -24,7 +24,7 @@ public class PaperNoteBehaviour : MonoBehaviour
 	
 	void Awake()
 	{
-		GetComponent<PhysicalObject>().DefaultButtons.Add(new ContextMenuButton("Set content", () =>
+		GetComponent<PhysicalObject>().ContextMenuButtons.Add(new ContextMenuButton("Set content", () =>
 		{
 			DialogController.main.Show("Enter the content:", new DialogButton[]
 			{

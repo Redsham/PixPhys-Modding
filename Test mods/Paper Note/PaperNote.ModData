@@ -1,10 +1,1 @@
-{
-	"Name":                  "Note Mod",
-	"Description":           "This mod adds a Paper note.",
-	"Author":                "Morzzic",
-	"GameVersion":           "0.1",
-	"ModVersion":            "1.0",
-	"Thumbnail":           	 "PaperNote.png",
-	"Scripts": [		 "Script.cs"
-	]
-}
+{"Name":"Note Mod","Description":"This mod adds a Paper note.","Author":"Morzzic","GameVersion":"0.1","ModVersion":"1.0","Tags":[],"Thumbnail":"PaperNote.png","Scripts":["Script.cs"],"CreatorUGCID":"","Enabled":true}

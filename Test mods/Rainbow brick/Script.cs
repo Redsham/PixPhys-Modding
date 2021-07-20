@@ -5,11 +5,11 @@ public class RainbowBrickMod : MonoBehaviour
     public static void Main()
     {
         Modification Modification = new Modification("Rainbow brick", "Brick");
-        Modification.Data.CategoryName = "Props";
-        Modification.Data.Description = "It changes colors.";
-        Modification.Data.Thumbnail = Modification.LoadSprite("None.png");
+        Modification.Item.CategoryName = "Props";
+        Modification.Item.Description = "It changes colors.";
+        Modification.Item.Thumbnail = Modification.LoadSprite("None.png");
 		
-        Modification.Data.SpawnAction += (Instance) =>
+        Modification.Item.SpawnAction += (Instance) =>
 	{
 		Instance.AddComponent<RainbowBrick>();
         };

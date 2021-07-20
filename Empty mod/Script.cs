@@ -5,12 +5,12 @@ public class EmptyMod : MonoBehaviour
     public static void Main()
     {
         Modification Modification = new Modification("Empty item", "Brick"); //Set name and original item
-        Modification.Data.CategoryName = "Props"; //Set category
-        Modification.Data.Description = "Description"; //Set description
-        Modification.Data.Thumbnail = Modification.LoadSprite("None.png"); //Set thumbnail
+        Modification.Item.CategoryName = "Props"; //Set category
+        Modification.Item.Description = "Description"; //Set description
+        Modification.Item.Thumbnail = Modification.LoadSprite("None.png"); //Set thumbnail
 		
 	//On spawn
-        Modification.Data.SpawnAction += (Instance) =>
+        Modification.Item.SpawnAction += (Instance) =>
 	{
 		Debug.Log(Instance.name + " spawned!");
         };

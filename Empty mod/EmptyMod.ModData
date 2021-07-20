@@ -1,10 +1,1 @@
-{
-	"Name":                  "Empty Mod",
-	"Description":           "Description",
-	"Author":                "Nickname",
-	"GameVersion":           "0.1",
-	"ModVersion":            "1.0",
-	"Thumbnail":           	 "None.png",
-	"Scripts": [		 "Script.cs"
-	]
-}
+{"Name":"Empty Mod","Description":"Description","Author":"Nickname","GameVersion":"0.1","ModVersion":"1.0","Tags":[],"Thumbnail":"None.png","Scripts":["Script.cs"],"CreatorUGCID":"","Enabled":true}

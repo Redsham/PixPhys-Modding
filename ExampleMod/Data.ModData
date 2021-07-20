@@ -1,10 +1,1 @@
-{
-	"Name":                  "Template Mod",
-	"Description":           "Description",
-	"Author":                "Author",
-	"GameVersion":           "Last",
-	"ModVersion":            "1.0",
-	"Thumbnail":           	 "Image.png",
-	"Scripts": [		 "Script.cs"
-	]
-}
+{"Name":"Template Mod","Description":"Description","Author":"Author","GameVersion":"Last","ModVersion":"1.0","Tags":[],"Thumbnail":"Image.png","Scripts":["Script.cs"],"CreatorUGCID":"","Enabled":true}
