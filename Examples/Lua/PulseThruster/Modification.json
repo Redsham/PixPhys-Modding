@@ -1,0 +1,19 @@
+{
+  "Name": "Example pulse thruster",
+  "Description": "Sandboxed physics controller using owned handles, simulation ticks and bounded commands.",
+  "Author": "PixPhys examples",
+  "GameVersion": "Mod API 1",
+  "ModificationVersion": "1.0.0",
+  "Thumbnail": "Sprites/Icon.png",
+  "WorkshopThumbnail": "Sprites/Icon.png",
+  "Tags": [
+    "Example"
+  ],
+  "WorkshopID": 0,
+  "Scripts": [
+    "main.lua"
+  ],
+  "Active": true,
+  "Runtime": "lua",
+  "ApiVersion": 1
+}
