@@ -1,0 +1,20 @@
+{
+  "Name": "Stateful components",
+  "Description": "Independent saved Lua components with context actions and collision events.",
+  "Author": "PixPhys examples",
+  "GameVersion": "Mod API 2",
+  "ModificationVersion": "1.0.0",
+  "Thumbnail": "Sprites/Icon.png",
+  "WorkshopThumbnail": "Sprites/Icon.png",
+  "Tags": [
+    "Example",
+    "Lua"
+  ],
+  "WorkshopID": 0,
+  "Scripts": [
+    "main.lua"
+  ],
+  "Active": true,
+  "Runtime": "lua",
+  "ApiVersion": 2
+}

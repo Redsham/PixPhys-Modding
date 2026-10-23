@@ -1,6 +1,6 @@
 # PixPhys modding examples
 
-Examples for the current `Modification.json` loader and Mod API 1. These examples require the PixPhys update that adds package review and Lua modifications; older released builds do not support the new Lua API.
+Examples for the current `Modification.json` loader and Mod API 1–2. API 2 adds custom data channels, logic nodes, part nodes and saved Lua components. These examples require the corresponding PixPhys update; older released builds do not support this Lua API.
 
 | Example | Runtime | Demonstrates |
 | --- | --- | --- |
@@ -8,15 +8,18 @@ Examples for the current `Modification.json` loader and Mod API 1. These example
 | [Resource speaker](Examples/CSharp/ResourceSpeaker) | Trusted C# | Packaged sprite/audio resources and a context action |
 | [Heat plate](Examples/Lua/HeatPlate) | Sandboxed Lua | Item registration, module loading, temperature, context action and persistent settings |
 | [Pulse thruster](Examples/Lua/PulseThruster) | Sandboxed Lua | Owned object handles, fixed-step updates and physical forces |
+| [Custom data bus](Examples/Lua/CustomDataBus) | Lua API 2 | Structured telemetry type, pack/unpack nodes, saved distance integrator |
+| [Signal thruster](Examples/Lua/SignalThruster) | Lua API 2 | Part node, editable inputs, physical outputs and saved motor state |
+| [Stateful components](Examples/Lua/StatefulComponents) | Lua API 2 | Multiple components per part, collision events and independent saved state |
 
-[Русская инструкция](README.ru.md) · [Lua API](docs/Lua-API.md) · [Compatibility and security](docs/Compatibility.md)
+[Русская инструкция](README.ru.md) · [Lua API](docs/Lua-API.md) · [Руководство по Lua и нодам](docs/Lua-Modding.ru.md) · [Compatibility and security](docs/Compatibility.md)
 
 ## Install an example
 
 1. Copy an individual example folder into `GameData/Modifications/`. Do not copy the whole repository into that folder.
 2. Start PixPhys and open the modifications menu.
 3. Choose **Review version**, inspect the runtime and permissions, then enable that version.
-4. Find the item in the catalogue and spawn it. Use its context menu for the demonstrated interaction.
+4. Find the item in the catalogue and spawn it. For CustomDataBus, open the construction's wiring editor and search for **Pack telemetry**, **Read telemetry** and **Telemetry distance counter**. That package adds nodes rather than physical items.
 
 On Windows, GameData is normally beside the game installation. On macOS and Linux, use the GameData folder in the game's persistent data location. Local paths and Workshop subscriptions have separate identities.
 

@@ -9,7 +9,7 @@ for manifest in sorted((root / "Examples").glob("*/*/Modification.json")):
     package = manifest.parent
     data = json.loads(manifest.read_text())
     assert data["Runtime"] in ("csharp", "lua"), manifest
-    assert data["ApiVersion"] == 1 and data["WorkshopID"] == 0, manifest
+    assert data["ApiVersion"] in (1, 2) and data["WorkshopID"] == 0, manifest
     for path in data["Scripts"] + [data["Thumbnail"], data["WorkshopThumbnail"]]:
         relative = Path(path)
         assert not relative.is_absolute() and ".." not in relative.parts, path
@@ -21,5 +21,5 @@ for manifest in sorted((root / "Examples").glob("*/*/Modification.json")):
             assert file.stat().st_size <= 32 * 1024 * 1024, file
             assert file.suffix.lower() not in (".dll", ".exe"), file
     count += 1
-assert count == 4, count
+assert count == 7, count
 print(f"PASS: {count} current example packages have valid manifests and contained resources.")
