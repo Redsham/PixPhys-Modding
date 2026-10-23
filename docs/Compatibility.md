@@ -27,3 +27,7 @@ A package has at most 4096 files and 8192 entries, 32 MiB per file and 256 MiB t
 Lua time/instruction accounting includes nested coroutines. It is cooperative at interpreter yield points: long host/library calls, native decoder defects and managed-heap exhaustion require additional runtime/process isolation for stronger guarantees. C# has no equivalent execution limit in compatibility mode.
 
 The optional signed revocation feed requires a public key provisioned with the game and a deployment/distribution process operated by the developer. This example repository supplies no production key or revocation server.
+
+## Data-only skins
+
+`Runtime: "skin"` uses the in-game item skin editor and a versioned `Skin.json` instead of scripts. Skin packages use the same snapshot, approval and Workshop publication flow. They configure built-in item geometry, textures and physical materials; original prefab scripts remain part of the game. A skin pack does not receive C# process access. Existing runtime manifests and registrations keep their previous meaning. See [the editor guide](Skin-Editor.md).

@@ -8,9 +8,21 @@ count = 0
 for manifest in sorted((root / "Examples").glob("*/*/Modification.json")):
     package = manifest.parent
     data = json.loads(manifest.read_text())
-    assert data["Runtime"] in ("csharp", "lua"), manifest
+    assert data["Runtime"] in ("csharp", "lua", "skin"), manifest
     assert data["ApiVersion"] in (1, 2) and data["WorkshopID"] == 0, manifest
-    for path in data["Scripts"] + [data["Thumbnail"], data["WorkshopThumbnail"]]:
+    resources = data["Scripts"] + [data["Thumbnail"], data["WorkshopThumbnail"]]
+    if data["Runtime"] == "skin":
+        assert data["ApiVersion"] == 1 and data["Scripts"] == [], manifest
+        resources.append(data["SkinFile"])
+        skin = json.loads((package / data["SkinFile"]).read_text())
+        assert skin["Version"] == 1 and 0 < len(skin["Items"]) <= 64
+        assert len({item["Id"] for item in skin["Items"]}) == len(skin["Items"])
+        for item in skin["Items"]:
+            assert item["BaseProp"] and len(item["Parts"]) <= 64
+            for part in item["Parts"]:
+                resources.extend(part[key] for key in ("Texture", "NormalMap") if part.get(key))
+            resources.append("Previews/" + item["Id"] + ".png")
+    for path in resources:
         relative = Path(path)
         assert not relative.is_absolute() and ".." not in relative.parts, path
         assert (package / relative).is_file(), path
@@ -21,5 +33,5 @@ for manifest in sorted((root / "Examples").glob("*/*/Modification.json")):
             assert file.stat().st_size <= 32 * 1024 * 1024, file
             assert file.suffix.lower() not in (".dll", ".exe"), file
     count += 1
-assert count == 7, count
+assert count == 8, count
 print(f"PASS: {count} current example packages have valid manifests and contained resources.")

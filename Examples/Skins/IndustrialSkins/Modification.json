@@ -1,0 +1,19 @@
+{
+  "Name": "Industrial skins",
+  "Description": "Editable item skins: texture, collision and physical material. No scripts.",
+  "Author": "PixPhys examples",
+  "GameVersion": "Skin API 1",
+  "ModificationVersion": "1.0.0",
+  "Thumbnail": "Thumbnail.png",
+  "Tags": [
+    "Skin"
+  ],
+  "WorkshopThumbnail": "Thumbnail.png",
+  "WorkshopID": 0,
+  "Scripts": [],
+  "Active": true,
+  "Runtime": "skin",
+  "ApiVersion": 1,
+  "SkinFile": "Skin.json",
+  "Dependencies": []
+}

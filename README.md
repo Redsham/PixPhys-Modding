@@ -4,6 +4,7 @@ Examples for the current `Modification.json` loader and Mod API 1–2. API 2 add
 
 | Example | Runtime | Demonstrates |
 | --- | --- | --- |
+| [Industrial skins](Examples/Skins/IndustrialSkins) | Data-only skin pack | No-code editor, imported texture, editable collision and physical materials |
 | [Beacon](Examples/CSharp/Beacon) | Trusted C# | Existing `Main(Modification)`, `Prop.Register`, Unity behaviour, saved fields and a context action |
 | [Resource speaker](Examples/CSharp/ResourceSpeaker) | Trusted C# | Packaged sprite/audio resources and a context action |
 | [Heat plate](Examples/Lua/HeatPlate) | Sandboxed Lua | Item registration, module loading, temperature, context action and persistent settings |
@@ -12,7 +13,7 @@ Examples for the current `Modification.json` loader and Mod API 1–2. API 2 add
 | [Signal thruster](Examples/Lua/SignalThruster) | Lua API 2 | Part node, editable inputs, physical outputs and saved motor state |
 | [Stateful components](Examples/Lua/StatefulComponents) | Lua API 2 | Multiple components per part, collision events and independent saved state |
 
-[Русская инструкция](README.ru.md) · [Lua API](docs/Lua-API.md) · [Руководство по Lua и нодам](docs/Lua-Modding.ru.md) · [Compatibility and security](docs/Compatibility.md)
+[Skin editor](docs/Skin-Editor.md) · [Русская инструкция](README.ru.md) · [Lua API](docs/Lua-API.md) · [Руководство по Lua и нодам](docs/Lua-Modding.ru.md) · [Compatibility and security](docs/Compatibility.md)
 
 ## Install an example
 
@@ -31,7 +32,7 @@ Lua modifications use a narrower API, with no host filesystem, process or Steam 
 
 ## Authoring
 
-`Runtime: "csharp"` and `Runtime: "lua"` select the runtime. Omitting Runtime retains the existing C# format. Scripts must be package-relative paths. Keep resources inside the example's folder; absolute paths, traversal, linked files and ambiguous filenames are rejected.
+`Runtime: "skin"` selects editable data-only skins; `Runtime: "csharp"` and `Runtime: "lua"` select script runtimes. Omitting Runtime retains the existing C# format. Scripts must be package-relative paths. Keep resources inside the example's folder; absolute paths, traversal, linked files and ambiguous filenames are rejected.
 
 Keep registered C# prop identifiers and saved behaviour type/field names stable across versions. Lua prop identifiers are scoped by package identity: moving a local mod to a different folder or publishing it under a new Workshop ID changes that identity. See the compatibility document before moving or renaming a package.
 
