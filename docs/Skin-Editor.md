@@ -19,6 +19,20 @@ Undo/redo keeps 32 actions; a polygon drag is one action. Saving clears history.
 
 Copy [IndustrialSkins](../Examples/Skins/IndustrialSkins) into `GameData/Modifications`, review and enable it. It adds **Hazard block** (a packaged texture and eight-point collider) and **Rubber block** (tint, circular collider and custom physical material). Open **Edit skin modification** to change either item without editing JSON. The matching PixPhys update is required.
 
+## Pixel snapping and precise vertex insertion
+
+**Snap vertices to pixels** is enabled by default. Dragged vertices and numerical coordinate edits align to sprite pixel boundaries, accounting for the sprite pivot. Existing vertices are unchanged when the setting is enabled. Disable it for free placement. Zoom in to see the pixel grid.
+
+Double click near the desired edge to insert a vertex at that position. A click in empty space does not modify the polygon. The inserted point remains exactly on the edge; on diagonals, snapping aligns its dominant coordinate to a pixel boundary without changing the edge shape. A complete drag remains one undo action.
+
+## Built-in texture editor
+
+Open **Appearance → Edit texture** to draw over the current sprite without changing its original asset. Use Pencil, Eraser, Fill and Pick color, select RGBA or a hex color, and set the brush size in pixels. Right click temporarily erases, the middle button pans, and the wheel zooms around the pointer. The checkerboard shows transparency; the pixel grid can be switched off.
+
+**Resize, keep pixels** preserves existing pixels from the top-left corner. **New transparent canvas** creates a blank image with the entered dimensions. Both operations support undo. Texture history keeps 32 operations and up to 64 MiB of pixel snapshots; one continuous stroke is one operation. Ctrl/Cmd+Z and Ctrl/Cmd+Y operate on this history while the texture editor is open.
+
+Drawing stays in a working copy until **Apply to skin**. Closing changed artwork offers Apply, Discard or Keep editing. Applying creates an owned PNG and one undoable skin-document edit; the original image and built-in item stay unchanged. Resizing preserves the skin's world width and keeps its collision settings. Save the skin pack afterwards to persist it to disk.
+
 ## Data-only format
 
 The package contains `Modification.json` with `Runtime: "skin"`, `ApiVersion: 1`, `Scripts: []`, an editable `Skin.json`, `Textures/`, per-item `Previews/` and `Thumbnail.png`. It cannot register arbitrary components, run scripts or write into another mod. Use Lua for new behaviour and logic nodes. Existing C# and Lua formats are unchanged.
