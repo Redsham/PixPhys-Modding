@@ -35,12 +35,56 @@ The pixel workspace puts a 64-color palette on the left, the canvas in the cente
 
 Drawing stays in a working copy until **Apply to skin**. Closing changed artwork offers Apply, Discard or Keep editing. Applying creates an owned PNG and one undoable skin-document edit; the original image and built-in item stay unchanged. Resizing preserves the skin's world width and keeps its collision settings. Save the skin pack afterwards to persist it to disk.
 
+## Layers, selections and shapes
+
+The layer panel is below the canvas. Rows at the top render above lower rows. Select a row to paint on it, toggle visibility, or use Add, Duplicate, Delete, Up, Down and Merge down. Set the selected layer's name and opacity in percent on the right. Hidden and locked layers cannot be painted on. Duplicates own independent pixels.
+
+The workspace allows up to 32 layers within a total of 16 megapixels across all layers. Resizing preserves the top-left corner of every layer. New transparent canvas starts with one empty layer; undo restores the previous stack.
+
+Applying and saving keeps an editable `Sources/<hash>.skintex` file alongside the flattened PNG. Reopening restores names, ordering, visibility, locks, opacity and pixels. Gameplay uses the ordinary PNG. Importing a replacement image or choosing the original texture replaces the layered artwork; the document undo can restore it before saving.
+
+The rectangular selection limits painting, erasing, filling and shapes to the selected pixels on the active layer. Copy uses that layer; Ctrl/Cmd+Shift+C copies the visible composite. Cut, paste and Delete preserve alpha. The internal pixel clipboard is shared between texture-editor windows during the current game run. Paste uses the selected position or the canvas center, clips to the canvas, and selects the Move tool.
+
+Drag inside the selection with Move to shift its pixels. Arrow keys move by one pixel; Shift+arrows move by ten. Deselect or Ctrl/Cmd+D removes the selection. Ctrl/Cmd+A selects the canvas.
+
+Line, Rectangle, Ellipse and filled variants preview while dragging and commit as one undo operation. Shift constrains a square/circle or snaps the line angle to 45-degree steps. Ctrl/Cmd draws rectangle/ellipse shapes from the center. Escape first cancels a gesture, then clears a selection, then closes the editor.
+
+The existing game HSV/RGBA Color Picker opens from **Choose color** or the current-color swatch. It includes saturation/value, hue, RGB, alpha and hex. Changes update the brush color live; Cancel restores the original color without adding pixel history.
+
+## Keyboard shortcuts
+
+The main tool defaults follow [Aseprite drawing tools](https://www.aseprite.org/docs/drawing/) and [drawing modifiers](https://www.aseprite.org/docs/keyboard-shortcuts/). They apply inside the texture workspace and are suppressed while editing text or using the color dialog.
+
+| Shortcut | Action |
+| --- | --- |
+| B (also P), E, G, I | Pencil, eraser, fill, eyedropper |
+| M, V, L, H | Marquee, move selection, line, pan |
+| U / U again | Rectangle / filled rectangle |
+| Shift+U / Shift+U again | Ellipse / filled ellipse |
+| Alt+click, Space+drag | Temporary eyedropper, temporary pan |
+| Ctrl/Cmd+C, X, V | Copy, cut, paste |
+| Ctrl/Cmd+Shift+C | Copy visible composite |
+| Ctrl/Cmd+A, D | Select all, deselect |
+| Delete / Backspace | Clear selected pixels on the active layer |
+| Ctrl/Cmd+Shift+N, Ctrl/Cmd+J | New layer, duplicate layer |
+| [ / ], minus / plus | Smaller / larger brush |
+| 1–6 | 100–600% zoom |
+| Ctrl/Cmd+' | Toggle pixel grid |
+| Ctrl/Cmd+Z, Ctrl/Cmd+Shift+Z (also Ctrl/Cmd+Y) | Undo, redo |
+| Enter, Escape | Finish; cancel gesture / deselect / close |
+| Ctrl/Cmd+S | Apply artwork to the skin |
+
+Pixel edits and layer operations share one history of 32 operations and up to 64 MiB of snapshots and retained buffers.
+
+
 ## Data-only format
 
-The package contains `Modification.json` with `Runtime: "skin"`, `ApiVersion: 1`, `Scripts: []`, an editable `Skin.json`, `Textures/`, per-item `Previews/` and `Thumbnail.png`. It cannot register arbitrary components, run scripts or write into another mod. Use Lua for new behaviour and logic nodes. Existing C# and Lua formats are unchanged.
+The package contains `Modification.json` with `Runtime: "skin"`, `ApiVersion: 1`, `Scripts: []`, an editable `Skin.json`, `Textures/`, optional editable `Sources/*.skintex`, per-item `Previews/` and `Thumbnail.png`. The additive `LayerSource` part field links the source to the flattened image; old skins without it open as one layer. It cannot register arbitrary components, run scripts or write into another mod. Use Lua for new behaviour and logic nodes. Existing C# and Lua formats are unchanged.
 
 Limits: 64 items, 64 configured parts per item, 3–64 vertices per polygon, 1 MiB skin document, 8 MiB per image, 8192 pixels per image side and 16 megapixels of decoded textures in the pack. Both filtering variants of an image count if used. Imported images held during an editing session are capped at 64 MiB. Self-intersecting polygons, unavailable base items, invalid part paths and non-finite parameters are rejected before saving.
 
 Keep item IDs and package identity stable. Renaming a displayed item is safe; moving a local package or publishing under a different Workshop ID changes its identity. Existing constructions still require the original package. A base item's hierarchy can change after a game update; affected skins may need to select the base and configure parts again.
+
+Editable sources are limited to 32 MiB, 32 layers and 16 megapixels across their layers, with at most 8 MiB per internal PNG. A separate 16-megapixel editable-layer quota applies across the whole pack. Names, dimensions and block lengths are validated before decoding. The flattened image remains a normal PNG and skin document version stays 1.
 
 [Русская инструкция](Skin-Editor.ru.md) · [Compatibility](Compatibility.md)
