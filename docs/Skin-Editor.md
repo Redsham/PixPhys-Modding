@@ -2,6 +2,8 @@
 
 Create optional artwork variants without writing code. Skin packs add choices to **Toybox > Skin**, including **Original**, rather than registering separate catalogue parts. Different quick slots can use different skins for the same base part. Open **Modifications → Create → Open skin editor**, choose a built-in base item, and edit its parts in the separate in-game editor. The base item keeps its normal gameplay behaviour.
 
+Skin choices appear as a horizontal row of named thumbnails. The current choice has a warm highlight. Use the wheel, drag the row or use its scrollbar to browse; keyboard and controller focus bring an offscreen choice into view. Missing artwork keeps its saved selection and displays a warning badge. The skin and texture workspaces share one visual theme.
+
 ## Workflow
 
 1. Enter a pack name and author. Use **Choose base item** to select the original item. Add more skin variants with **+**; each has its own name, description and part settings.
