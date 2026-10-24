@@ -1,0 +1,177 @@
+{
+    "Version": 1,
+    "ProjectId": "industrial_skins_v1",
+    "Name": "Industrial skins",
+    "Author": "PixPhys examples",
+    "Description": "Editable item skins: texture, collision and physical material. No scripts.",
+    "Items": [
+        {
+            "Id": "hazard_block",
+            "BaseProp": "SmallMetalCube",
+            "Name": "Hazard block",
+            "Description": "Painted industrial block with a clipped collision contour.",
+            "Parts": [
+                {
+                    "Path": "",
+                    "Appearance": true,
+                    "Texture": "Textures/964a9ef16c97889634473e9ad24f9e4019aa6ca1a9b2ee67dbd2306d95e74eac.png",
+                    "NormalMap": "",
+                    "LayerSource": "Sources/98da0049e9e4cf5aa1654bad85c26057f48410e9fabfcdf484de2f6185333a5c.skintex",
+                    "PixelsPerUnit": 32.0,
+                    "Pixelated": true,
+                    "FlipX": false,
+                    "FlipY": false,
+                    "Visible": true,
+                    "Scale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "Color": {
+                        "r": 1.0,
+                        "g": 1.0,
+                        "b": 1.0,
+                        "a": 1.0
+                    },
+                    "Surface": 1,
+                    "Collision": {
+                        "Shape": 4,
+                        "Offset": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Size": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "Radius": 0.5,
+                        "Horizontal": false,
+                        "Points": [
+                            {
+                                "x": -0.4000000059604645,
+                                "y": -0.5
+                            },
+                            {
+                                "x": 0.4000000059604645,
+                                "y": -0.5
+                            },
+                            {
+                                "x": 0.5,
+                                "y": -0.4000000059604645
+                            },
+                            {
+                                "x": 0.5,
+                                "y": 0.4000000059604645
+                            },
+                            {
+                                "x": 0.4000000059604645,
+                                "y": 0.5
+                            },
+                            {
+                                "x": -0.4000000059604645,
+                                "y": 0.5
+                            },
+                            {
+                                "x": -0.5,
+                                "y": 0.4000000059604645
+                            },
+                            {
+                                "x": -0.5,
+                                "y": -0.4000000059604645
+                            }
+                        ]
+                    },
+                    "Physics": true,
+                    "Material": "Metal",
+                    "CustomPhysics": false,
+                    "Friction": 0.5,
+                    "Bounciness": 0.05000000074505806,
+                    "Density": 7.699999809265137,
+                    "HeatTransfer": 1.0,
+                    "HeatCapacity": 1.0,
+                    "Flammable": false,
+                    "Conducting": true,
+                    "IgnitionTemperature": 0.0,
+                    "MaximumTemperature": 1000.0,
+                    "OverrideMass": true,
+                    "Mass": 2.0
+                }
+            ]
+        },
+        {
+            "Id": "rubber_block",
+            "BaseProp": "SmallMetalCube",
+            "Name": "Rubber block",
+            "Description": "The same base with a different color, shape and physical material.",
+            "Parts": [
+                {
+                    "Path": "",
+                    "Appearance": true,
+                    "Texture": "",
+                    "NormalMap": "",
+                    "LayerSource": "",
+                    "PixelsPerUnit": 10.0,
+                    "Pixelated": true,
+                    "FlipX": false,
+                    "FlipY": false,
+                    "Visible": true,
+                    "Scale": {
+                        "x": 1.0,
+                        "y": 1.0
+                    },
+                    "Color": {
+                        "r": 0.20000000298023225,
+                        "g": 0.800000011920929,
+                        "b": 0.47999998927116396,
+                        "a": 1.0
+                    },
+                    "Surface": 2,
+                    "Collision": {
+                        "Shape": 2,
+                        "Offset": {
+                            "x": 0.0,
+                            "y": 0.0
+                        },
+                        "Size": {
+                            "x": 1.0,
+                            "y": 1.0
+                        },
+                        "Radius": 0.5,
+                        "Horizontal": false,
+                        "Points": [
+                            {
+                                "x": -0.5,
+                                "y": -0.5
+                            },
+                            {
+                                "x": 0.5,
+                                "y": -0.5
+                            },
+                            {
+                                "x": 0.5,
+                                "y": 0.5
+                            },
+                            {
+                                "x": -0.5,
+                                "y": 0.5
+                            }
+                        ]
+                    },
+                    "Physics": true,
+                    "Material": "",
+                    "CustomPhysics": true,
+                    "Friction": 0.8999999761581421,
+                    "Bounciness": 0.699999988079071,
+                    "Density": 0.4000000059604645,
+                    "HeatTransfer": 1.0,
+                    "HeatCapacity": 1.0,
+                    "Flammable": false,
+                    "Conducting": false,
+                    "IgnitionTemperature": 0.0,
+                    "MaximumTemperature": 1000.0,
+                    "OverrideMass": false,
+                    "Mass": 7.699999809265137
+                }
+            ]
+        }
+    ]
+}

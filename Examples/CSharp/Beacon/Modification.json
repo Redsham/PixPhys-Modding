@@ -1,0 +1,19 @@
+{
+  "Name": "Example beacon",
+  "Description": "A saved, switchable beacon built with the existing C# API. Requires trust for this exact package.",
+  "Author": "PixPhys examples",
+  "GameVersion": "Mod API 1",
+  "ModificationVersion": "1.0.0",
+  "Thumbnail": "Sprites/Icon.png",
+  "WorkshopThumbnail": "Sprites/Icon.png",
+  "Tags": [
+    "Example"
+  ],
+  "WorkshopID": 0,
+  "Scripts": [
+    "Script.cs"
+  ],
+  "Active": true,
+  "Runtime": "csharp",
+  "ApiVersion": 1
+}
