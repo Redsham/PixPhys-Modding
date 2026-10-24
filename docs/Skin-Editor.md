@@ -29,6 +29,8 @@ Double click near the desired edge to insert a vertex at that position. A click 
 
 Open **Appearance → Edit texture** to draw over the current sprite without changing its original asset. Use Pencil, Eraser, Fill and Pick color, select RGBA or a hex color, and set the brush size in pixels. Right click temporarily erases, the middle button pans, and the wheel zooms around the pointer. The checkerboard shows transparency; the pixel grid can be switched off.
 
+The pixel workspace puts a 64-color palette on the left, the canvas in the center and tools with pixel icons on the right. Clicking a swatch selects its color and updates the RGBA controls and hex field without adding a drawing-history operation. Current color, RGBA channels and canvas dimensions sit below the palette; this panel scrolls on smaller screens. Brush size, undo, redo, fit canvas and the grid switch are in the top context bar.
+
 **Resize, keep pixels** preserves existing pixels from the top-left corner. **New transparent canvas** creates a blank image with the entered dimensions. Both operations support undo. Texture history keeps 32 operations and up to 64 MiB of pixel snapshots; one continuous stroke is one operation. Ctrl/Cmd+Z and Ctrl/Cmd+Y operate on this history while the texture editor is open.
 
 Drawing stays in a working copy until **Apply to skin**. Closing changed artwork offers Apply, Discard or Keep editing. Applying creates an owned PNG and one undoable skin-document edit; the original image and built-in item stay unchanged. Resizing preserves the skin's world width and keeps its collision settings. Save the skin pack afterwards to persist it to disk.
