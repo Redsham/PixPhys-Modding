@@ -31,3 +31,5 @@ The optional signed revocation feed requires a public key provisioned with the g
 ## Data-only skins
 
 `Runtime: "skin"` uses the in-game item skin editor and a versioned `Skin.json` instead of scripts. Skin packages use the same snapshot, approval and Workshop publication flow. They configure built-in item geometry, textures and physical materials; original prefab scripts remain part of the game. A skin pack does not receive C# process access. Existing runtime manifests and registrations keep their previous meaning. See [the editor guide](Skin-Editor.md).
+
+Skin packs now provide optional Toybox artwork choices rather than separate registered props. Constructions retain base identities and physical snapshots without requiring texture packs. Missing actual parts can be opened as a separate incomplete copy after confirmation; see [the skin guide](Skin-Editor.md#optional-artwork-and-missing-construction-parts). Construction versions 0 and 1 remain readable by the version 2 loader.

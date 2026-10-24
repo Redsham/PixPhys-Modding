@@ -1,15 +1,15 @@
 # Item skin editor
 
-Create item variants without writing code. Open **Modifications → Create → Open skin editor**, choose a built-in base item, and edit its parts in the separate in-game editor. The base item keeps its normal gameplay behaviour.
+Create optional artwork variants without writing code. Skin packs add choices to **Toybox > Skin**, including **Original**, rather than registering separate catalogue parts. Different quick slots can use different skins for the same base part. Open **Modifications → Create → Open skin editor**, choose a built-in base item, and edit its parts in the separate in-game editor. The base item keeps its normal gameplay behaviour.
 
 ## Workflow
 
-1. Enter a pack name and author. Use **Choose base item** to select the original item. Add more items with **+**; each has its own name, description and part settings.
+1. Enter a pack name and author. Use **Choose base item** to select the original item. Add more skin variants with **+**; each has its own name, description and part settings.
 2. In **Appearance**, import a PNG/JPEG, choose tint/opacity, scale, mirroring and visibility. Set pixels per world unit to adjust image size. Choose original, lit or unlit rendering; lit materials support imported normal maps. Imported files are copied into the package.
 3. In **Collision**, keep the original shape or choose a box, circle, capsule, editable polygon or no solid collision. Edit dimensions and offsets numerically. Polygon vertices can be dragged; double click adds a vertex and right click removes one. **Outline from image** creates a convex hull of opaque pixels in an imported image. For concave shapes, edit the vertices afterwards.
 4. In **Material**, enable an override, choose a game preset or enter custom friction, bounce, density, thermal, fire and electrical parameters. You can set mass explicitly; otherwise a material change adjusts mass for density and replacement collider area.
 5. Use **Test drop** to check contact geometry. The preview uses a separate physics scene and geometry-only copies. Articulated items are approximated by one rigid body: motors, joints, fire and gameplay scripts do not run in the preview. Check full gameplay after saving.
-6. **Save** writes a local modification. A new pack becomes available in the catalogue immediately. Updating an already loaded pack requires restarting the game. **Save a copy** creates a separate local package with Workshop ID zero.
+6. **Save** writes a local modification. New variants become available in Toybox immediately. Saving an already loaded skin pack refreshes artwork without restarting. Existing constructions keep their saved physical settings; new placements use the current variant. **Save a copy** creates a separate package with a fresh ProjectId and Workshop ID zero.
 
 Use the modification context menu to edit an existing skin pack or publish a saved package through the normal Workshop confirmation. Editing a Workshop pack produces a local copy. Incoming or changed packages still require version review; the editor approves the exact local version it has just authored.
 
@@ -17,7 +17,7 @@ Undo/redo keeps 32 actions; a polygon drag is one action. Saving clears history.
 
 ## Example
 
-Copy [IndustrialSkins](../Examples/Skins/IndustrialSkins) into `GameData/Modifications`, review and enable it. It adds **Hazard block** (a packaged texture and eight-point collider) and **Rubber block** (tint, circular collider and custom physical material). Open **Edit skin modification** to change either item without editing JSON. The matching PixPhys update is required.
+Copy [IndustrialSkins](../Examples/Skins/IndustrialSkins) into `GameData/Modifications`, review and enable it. Choose Small Metal Cube in Toybox and select **Hazard block** (a packaged texture and eight-point collider) or **Rubber block** (tint, circular collider and custom physical material) in its Skin list. Open **Edit skin modification** to change either item without editing JSON. The matching PixPhys update is required.
 
 ## Pixel snapping and precise vertex insertion
 
@@ -89,8 +89,16 @@ The package contains `Modification.json` with `Runtime: "skin"`, `ApiVersion: 1`
 
 Limits: 64 items, 64 configured parts per item, 3–64 vertices per polygon, 1 MiB skin document, 8 MiB per image, 8192 pixels per image side and 16 megapixels of decoded textures in the pack. Both filtering variants of an image count if used. Imported images held during an editing session are capped at 64 MiB. Self-intersecting polygons, unavailable base items, invalid part paths and non-finite parameters are rejected before saving.
 
-Keep item IDs and package identity stable. Renaming a displayed item is safe; moving a local package or publishing under a different Workshop ID changes its identity. Existing constructions still require the original package. A base item's hierarchy can change after a game update; affected skins may need to select the base and configure parts again.
+Keep ProjectId and variant Id values stable. Renaming a variant is safe. A construction stores its ordinary base PropID, optional skin identity and a bounded snapshot of collision, scale and physical settings. Artwork is matched by ProjectId, variant Id and the Workshop source when present, so moving a local directory or installing the same pack through Workshop does not create a separate base part. Ambiguous copies are not selected at random. A base item's hierarchy can change after a game update; affected skins may need to select the base and configure parts again.
 
 Editable sources are limited to 32 MiB, 32 layers and 16 megapixels across their layers, with at most 8 MiB per internal PNG. A separate 16-megapixel editable-layer quota applies across the whole pack. Names, dimensions and block lengths are validated before decoding. The flattened image remains a normal PNG and skin document version stays 1.
 
 [Русская инструкция](Skin-Editor.ru.md) · [Compatibility](Compatibility.md)
+
+## Optional artwork and missing construction parts
+
+Skin packs are optional for Workshop constructions. Without a pack, the complete construction opens using the original artwork while preserving its saved collision, mass, material and scale. Installing and enabling the matching reviewed pack restores artwork on loaded parts without applying physics twice. OptionalSkins in Vehicle.json is separate from RequiredParts and does not make a texture pack a required part dependency.
+
+If actual parts or logic nodes are unavailable, the load dialog lists them and offers Cancel or Open incomplete copy. An incomplete copy omits missing items and their joints, wires and service connections; it does not overwrite the source and requires Save As in the workbench. Known publications have Workshop links. Downloaded modifications still use the normal approval flow.
+
+Construction save version 2 adds optional Skin references and keeps mod component payloads separate from the part list, allowing unavailable mod parts to be skipped without executing their code. Versions 0 and 1 remain readable. Old saves referring to separately registered skin items migrate when opened with the original skin pack installed; the next save stores the ordinary base part and optional skin. Without that old pack, the old format has no base-part metadata, so the entry appears in the missing-parts list. Skin.json remains version 1, and existing packs do not need manual conversion.
