@@ -39,6 +39,12 @@ Drawing stays in a working copy until **Apply to skin**. Closing changed artwork
 
 The layer panel is below the canvas. Rows at the top render above lower rows. Select a row to paint on it, toggle visibility, or use Add, Duplicate, Delete, Up, Down and Merge down. Separate eye and lock columns change any layer without changing the active selection. Set the selected layer's name and opacity in percent below the list. Hidden and locked layers cannot be painted on. Duplicates own independent pixels.
 
+Drag a layer by its name to change its order. A yellow insertion line previews the destination; dragging near the top or bottom of a long list auto-scrolls. Dropping outside the list or pressing Esc cancels. A completed drag is one undo/redo operation.
+
+Double-click a name to rename it inline: Enter or clicking outside commits, while Esc cancels. Empty names and names longer than 64 characters are rejected. Right-click a layer for New, Duplicate, Rename, Delete, Merge down, Move up/down, Show/hide and Lock/unlock. Unavailable operations are disabled; Esc or clicking outside dismisses the menu without changing artwork.
+
+The interface uses the game palette: dark panels, light text and a yellow accent. The palette swatch colors are preserved.
+
 The workspace allows up to 32 layers within a total of 16 megapixels across all layers. Resizing preserves the top-left corner of every layer. New transparent canvas starts with one empty layer; undo restores the previous stack.
 
 Applying and saving keeps an editable `Sources/<hash>.skintex` file alongside the flattened PNG. Reopening restores names, ordering, visibility, locks, opacity and pixels. Gameplay uses the ordinary PNG. Importing a replacement image or choosing the original texture replaces the layered artwork; the document undo can restore it before saving.
