@@ -29,7 +29,7 @@ Double click near the desired edge to insert a vertex at that position. A click 
 
 Open **Appearance → Edit texture** to draw over the current sprite without changing its original asset. Use Pencil, Eraser, Fill and Pick color, select RGBA or a hex color, and set the brush size in pixels. Right click temporarily erases, the middle button pans, and the wheel zooms around the pointer. The checkerboard shows transparency; the pixel grid can be switched off.
 
-The pixel workspace puts a 64-color palette on the left, the canvas in the center and tools with pixel icons on the right. Clicking a swatch selects its color and updates the RGBA controls and hex field without adding a drawing-history operation. Current color, RGBA channels and canvas dimensions sit below the palette; this panel scrolls on smaller screens. Brush size, undo, redo, fit canvas and the grid switch are in the top context bar.
+The compact workspace puts a 64-color palette on the left, the canvas in the center, one column of pixel tool icons on the right and a layer table below the canvas. Hover a tool to see its name and shortcut in the status bar. Saturation/value, hue, the current color, hex and alpha stay below the palette, using an inline mode of the existing game Color Picker. Swatches synchronize the color without adding drawing history. Brush size, undo, redo, fit, grid, texture dimensions and resize actions are in the top context bar. The checkerboard is limited to the image; the surrounding canvas is a solid color. The pixel grid is off by default.
 
 **Resize, keep pixels** preserves existing pixels from the top-left corner. **New transparent canvas** creates a blank image with the entered dimensions. Both operations support undo. Texture history keeps 32 operations and up to 64 MiB of pixel snapshots; one continuous stroke is one operation. Ctrl/Cmd+Z and Ctrl/Cmd+Y operate on this history while the texture editor is open.
 
@@ -37,7 +37,7 @@ Drawing stays in a working copy until **Apply to skin**. Closing changed artwork
 
 ## Layers, selections and shapes
 
-The layer panel is below the canvas. Rows at the top render above lower rows. Select a row to paint on it, toggle visibility, or use Add, Duplicate, Delete, Up, Down and Merge down. Set the selected layer's name and opacity in percent on the right. Hidden and locked layers cannot be painted on. Duplicates own independent pixels.
+The layer panel is below the canvas. Rows at the top render above lower rows. Select a row to paint on it, toggle visibility, or use Add, Duplicate, Delete, Up, Down and Merge down. Separate eye and lock columns change any layer without changing the active selection. Set the selected layer's name and opacity in percent below the list. Hidden and locked layers cannot be painted on. Duplicates own independent pixels.
 
 The workspace allows up to 32 layers within a total of 16 megapixels across all layers. Resizing preserves the top-left corner of every layer. New transparent canvas starts with one empty layer; undo restores the previous stack.
 
@@ -49,7 +49,7 @@ Drag inside the selection with Move to shift its pixels. Arrow keys move by one 
 
 Line, Rectangle, Ellipse and filled variants preview while dragging and commit as one undo operation. Shift constrains a square/circle or snaps the line angle to 45-degree steps. Ctrl/Cmd draws rectangle/ellipse shapes from the center. Escape first cancels a gesture, then clears a selection, then closes the editor.
 
-The existing game HSV/RGBA Color Picker opens from **Choose color** or the current-color swatch. It includes saturation/value, hue, RGB, alpha and hex. Changes update the brush color live; Cancel restores the original color without adding pixel history.
+The existing game HSV/RGBA Color Picker opens from the current-color swatch. It includes saturation/value, hue, RGB, alpha and hex. Changes update the brush color live; Cancel restores the original color without adding pixel history.
 
 ## Keyboard shortcuts
 
